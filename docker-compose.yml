@@ -1,0 +1,34 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgis/postgis:15-3.3
+    container_name: motoroute-postgres
+    environment:
+      POSTGRES_DB: motoroute
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - motoroute-network
+
+  redis:
+    image: redis:7-alpine
+    container_name: motoroute-redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    networks:
+      - motoroute-network
+
+volumes:
+  postgres_data:
+  redis_data:
+
+networks:
+  motoroute-network:
+    driver: bridge
