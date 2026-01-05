@@ -59,11 +59,14 @@ server:
     include-binding-errors: always
 
 jwt:
+  # IMPORTANT: Change this secret in production! Must be at least 256 bits (32 characters)
+  # Generate a secure secret: openssl rand -base64 32
   secret: ${JWT_SECRET:motoroute-secret-key-change-in-production-must-be-at-least-256-bits-long}
   expiration: ${JWT_EXPIRATION:86400000}
   refresh-expiration: ${JWT_REFRESH_EXPIRATION:604800000}
 
 openroute:
+  # REQUIRED: Get your API key from https://openrouteservice.org/
   api-key: ${OPENROUTE_API_KEY:your-api-key-here}
   base-url: ${OPENROUTE_BASE_URL:https://api.openrouteservice.org}
 

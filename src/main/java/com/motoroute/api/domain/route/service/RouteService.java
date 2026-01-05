@@ -114,7 +114,9 @@ public class RouteService {
     }
 
     private List<List<BigDecimal>> parseGeometry(String geometry) {
-        // Simplified geometry parsing - in production, use proper GeoJSON library
+        // TODO: Implement proper GeoJSON parsing
+        // Currently returns empty list - in production, use Jackson's GeoJSON support
+        // or a dedicated library to parse the geometry string back to coordinates
         if (geometry == null || geometry.isEmpty()) {
             return List.of();
         }
